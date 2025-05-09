@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thời Trang Biểu Tượng Tổ Quốc</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #1a1a1a;
+      background: linear-gradient(45deg, rgba(220, 38, 38, 0.4), rgba(255, 215, 0, 0.4)), url('https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    /* Parallax Effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      z-index: -1;
+      transform: translateZ(0);
+    }
+    /* Gradient Pulse Animation */
+    @keyframes gradientPulse {
+      0% { background: linear-gradient(45deg, rgba(220, 38, 38, 0.4), rgba(255, 215, 0, 0.4)); }
+      50% { background: linear-gradient(45deg, rgba(220, 38, 38, 0.6), rgba(255, 215, 0, 0.6)); }
+      100% { background: linear-gradient(45deg, rgba(220, 38, 38, 0.4), rgba(255, 215, 0, 0.4)); }
+    }
+    body {
+      animation: gradientPulse 5s infinite;
+    }
+    /* Glassmorphism Header */
+    header {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    /* Glowing Logo */
+    .logo {
+      animation: glow 2s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 10px #ffd700, 0 0 20px #dc2626; }
+      50% { text-shadow: 0 0 20px #ffd700, 0 0 30px #dc2626; }
+    }
+    /* Nav Link Animation */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: #dc2626;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    /* Hero Slideshow */
+    .hero {
+      position: relative;
+      height: 70vh;
+      overflow: hidden;
+    }
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .hero-slide.active {
+      opacity: 1;
+    }
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    /* Typewriter Effect */
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 3s steps(40, end) infinite;
+    }
+    @keyframes typing {
+      0% { width: 0; }
+      50% { width: 100%; }
+      100% { width: 0; }
+    }
+    /* Pulsating Button */
+    .hero-btn {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    /* Product Card 3D Flip */
+    .product-card {
+      perspective: 1000px;
+      height: 400px;
+    }
+    .product-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .product-card:hover .product-card-inner {
+      transform: rotateY(180deg);
+    }
+    .product-card-front, .product-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .product-card-front {
+      background: white;
+    }
+    .product-card-back {
+      background: #dc2626;
+      color: white;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    /* Glowing Border */
+    .product-card:hover {
+      box-shadow: 0 0 15px #ffd700, 0 0 30px #dc2626;
+    }
+    /* Filter Bar */
+    .filter-btn {
+      transition: all 0.3s ease;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: #dc2626;
+      color: white;
+      transform: scale(1.1);
+    }
+    /* Cart Dropdown */
+    .cart-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      z-index: 40;
+      padding: 1rem;
+      transform: translateY(-10px);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .cart-dropdown.show {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .cart-count {
+      animation: bounce 0.3s ease;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    /* Modal */
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      border: 3px solid #ffd700;
+      box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+    }
+    .tab {
+      transition: all 0.3s ease;
+    }
+    .tab.active {
+      color: #dc2626;
+      transform: translateY(2px);
+    }
+    /* Footer Wave with Soldier Silhouette */
+    .footer-wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 50C240 100 480 0 720 50C960 100 1200 0 1440 50V100H0V50Z" fill="%231a1a1a"/></svg>') no-repeat, url('https://img.icons8.com/ios-filled/50/ffffff/soldier.png') no-repeat center;
+      background-size: cover, 50px;
+      animation: wave 10s linear infinite;
+    }
+    @keyframes wave {
+      0% { background-position-x: 0, center; }
+      100% { background-position-x: 1440px, center; }
+    }
+    /* Social Icons */
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: scale(1.2) rotate(15deg);
+    }
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #dc2626;
+      color: white;
+      padding: 1rem;
+      border-radius: 50%;
+      display: none;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    .back-to-top.show {
+      display: block;
+    }
+    .back-to-top:hover {
+      background: #b91c1c;
+      transform: scale(1.2);
+    }
+    /* Pop-up Ad */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      max-width: 400px;
+      text-align: center;
+      border: 2px solid #ffd700;
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .popup.show {
+      display: block;
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    /* Product Banner */
+    .product-banner {
+      background: linear-gradient(rgba(220, 38, 38, 0.5), rgba(255, 215, 0, 0.5)), url('https://images.unsplash.com/photo-1507643179773-3e975d7ac515?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center;
+      background-size: cover;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 2rem;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <div class="text-3xl font-bold logo">
+        <a href="#">Tổ Quốc Fashion</a>
+      </div>
+      <nav class="space-x-6">
+        <a href="trangchu (1).html" class="nav-link hover:text-red-600">Trang chủ</a>
+        <a href="sp1.html" class="nav-link hover:text-red-600">Phụ kiện và túi đựng</a>
+        <a href="sp3 (1).html" class="nav-link hover:text-red-600">Áo truyền thống và hiện đại</a>
+        <a href="sp2.html" class="nav-link hover:text-red-600">Đồ cho bé - mầm non tương lai</a>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <!-- Cart Icon -->
+        <div class="cart-container">
+          <button id="cart-btn" class="hover:text-red-600 relative">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            <span id="cart-count" class="cart-count absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+          </button>
+          <!-- Cart Dropdown -->
+          <div id="cart-dropdown" class="cart-dropdown">
+            <h4 class="text-lg font-semibold mb-2">Giỏ hàng</h4>
+            <div id="cart-items"></div>
+            <div class="cart-total">Tổng: <span id="cart-total">0 VNĐ</span></div>
+            <a href="#checkout" class="block text-center bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Thanh toán</a>
+          </div>
+        </div>
+        <!-- User Icon -->
+        <button id="user-btn" class="hover:text-red-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- User Modal (Login & Register) -->
+  <div id="user-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal" class="close-modal">×</span>
+      <div class="flex justify-center mb-4">
+        <div id="login-tab" class="tab active">Đăng nhập</div>
+        <div id="register-tab" class="tab">Đăng ký</div>
+      </div>
+      <!-- Login Form -->
+      <div id="login-content" class="tab-content active">
+        <h2 class="text-2xl font-bold text-center">Đăng nhập</h2>
+        <input type="text" id="login-username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="login-password" placeholder="Mật khẩu" required>
+        <button id="submit-login" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Đăng nhập</button>
+      </div>
+      <!-- Register Form -->
+      <div id="register-content" class="tab-content">
+        <h2 class="text-2xl font-bold text-center">Đăng ký</h2>
+        <input type="text" id="register-username" placeholder="Tên đăng nhập" required>
+        <input type="email" id="register-email" placeholder="Email" required>
+        <input type="password" id="register-password" placeholder="Mật khẩu" required>
+        <button id="submit-register" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Đăng ký</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1618472609777-c4ea46e9c6c0')"></div>
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1621252179027-94459d278661')"></div>
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1574169207511-4a0c937858af')"></div>
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1507643179773-3e975d7ac515?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
+    <div class="hero-content">
+      <h1 class="text-5xl font-bold mb-4">Thời Trang Biểu Tượng Tổ Quốc</h1>
+      <p class="text-xl mb-6 typewriter">Tôn vinh giá trị Việt qua từng sản phẩm tinh tế</p>
+      <a href="#" class="hero-btn bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700">Khám phá ngay</a>
+    </div>
+  </section>
+
+  <!-- Product Section -->
+  <section class="container mx-auto px-4 py-12">
+    <div class="product-banner">
+      <h3 class="text-2xl font-bold">Tự Hào Việt Nam</h3>
+    </div>
+    <h2 class="text-4xl font-bold text-center mb-8 text-white">Sản Phẩm Nổi Bật</h2>
+    <div class="filter-bar flex justify-center gap-4 mb-8">
+      <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full active" data-sort="default">Mặc định</button>
+      <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full" data-sort="price-asc">Giá: Thấp đến Cao</button>
+      <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full" data-sort="price-desc">Giá: Cao đến Thấp</button>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
+      <!-- Product Card 1 -->
+      <div class="product-card" data-price="350000">
+        <div class="product-card-inner">
+          <div class="product-card-front">
+            <img src="Screenshot 2025-04-24 110523.png" alt="Áo thun cờ Việt Nam" class="w-full h-64 object-cover">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold">Áo Thun Cờ Việt Nam</h3>
+              <p class="text-gray-600">350.000 VNĐ</p>
+              <button class="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 add-to-cart" data-name="Áo Thun Cờ Việt Nam" data-price="350000">Thêm vào giỏ</button>
+            </div>
+          </div>
+          <div class="product-card-back">
+            <p>Áo thun với hình cờ Việt Nam, thể hiện lòng tự hào dân tộc.</p>
+            <a href="sp3 (1).html" class="mt-4 inline-block bg-white text-red-600 px-4 py-2 rounded hover:bg-gray-100">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+      <!-- Product Card 2 -->
+      <div class="product-card" data-price="200000">
+        <div class="product-card-inner">
+          <div class="product-card-front">
+            <img src="Mu-luoi-trai-co-do-sao-vang.jpg" alt="Mũ lưỡi trai sao vàng" class="w-full h-64 object-cover">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold">Mũ Lưỡi Trai Sao Vàng</h3>
+              <p class="text-gray-600">200.000 VNĐ</p>
+              <button class="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 add-to-cart" data-name="Mũ Lưỡi Trai Sao Vàng" data-price="200000">Thêm vào giỏ</button>
+            </div>
+          </div>
+          <div class="product-card-back">
+            <p>Mũ lưỡi trai với ngôi sao vàng, phong cách và ý nghĩa.</p>
+            <a href="sp1.html" class="mt-4 inline-block bg-white text-red-600 px-4 py-2 rounded hover:bg-gray-100">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+      <!-- Product Card 3 -->
+      <div class="product-card" data-price="250000">
+        <div class="product-card-inner">
+          <div class="product-card-front">
+            <img src="túi tote.jpg" alt="Túi tote bản đồ Việt Nam" class="w-full h-64 object-cover">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold">Túi Tote Bản Đồ Việt Nam</h3>
+              <p class="text-gray-600">250.000 VNĐ</p>
+              <button class="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 add-to-cart" data-name="Túi Tote Bản Đồ Việt Nam" data-price="250000">Thêm vào giỏ</button>
+            </div>
+          </div>
+          <div class="product-card-back">
+            <p>Túi tote với bản đồ Việt Nam, tiện dụng và yêu nước.</p>
+            <a href="sp1.html" class="mt-4 inline-block bg-white text-red-600 px-4 py-2 rounded hover:bg-gray-100">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+      <!-- Product Card 4 -->
+      <div class="product-card" data-price="150000">
+        <div class="product-card-inner">
+          <div class="product-card-front">
+            <img src="vttd.jpg" alt="Vòng tay trống đồng" class="w-full h-64 object-cover">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold">Vòng Tay Trống Đồng</h3>
+              <p class="text-gray-600">150.000 VNĐ</p>
+              <button class="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 add-to-cart" data-name="Vòng Tay Trống Đồng" data-price="150000">Thêm vào giỏ</button>
+            </div>
+          </div>
+          <div class="product-card-back">
+            <p>Vòng tay với họa tiết trống đồng, mang đậm văn hóa Việt.</p>
+            <a href="sp1.html" class="mt-4 inline-block bg-white text-red-600 px-4 py-2 rounded hover:bg-gray-100">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8 relative">
+    <div class="footer-wave"></div>
+    <div class="container mx-auto px-4 relative">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-lg font-bold mb-4">Tổ Quốc Fashion</h3>
+          <p>Tôn vinh văn hóa Việt qua thời trang và phụ kiện độc đáo.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Liên kết nhanh</h3>
+          <ul class="space-y-2">
+            <li><a href="trangchu (1).html" class="hover:text-red-400">Trang chủ</a></li>
+            <li><a href="sp1.html" class="hover:text-red-400">Phụ kiện và túi đựng</a></li>
+            <li><a href="sp3 (1).html" class="hover:text-red-400">Áo truyền thống và hiện đại</a></li>
+            <li><a href="sp2.html" class="hover:text-red-400">Đồ cho bé - mầm non tương lai</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Liên hệ</h3>
+          <p>Email: contact@toquocfashion.vn</p>
+          <p>Hotline: 0123 456 789</p>
+          <p>Địa chỉ: 123 Đường Láng, Hà Nội</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Theo dõi chúng tôi</h3>
+          <div class="flex space-x-4">
+            <a href="https://facebook.com" class="social-icon">
+              <img src="https://img.icons8.com/color/32/facebook-new.png" alt="Facebook">
+            </a>
+            <a href="https://instagram.com" class="social-icon">
+              <img src="https://img.icons8.com/color/32/instagram-new.png" alt="Instagram">
+            </a>
+            <a href="https://tiktok.com" class="social-icon">
+              <img src="https://img.icons8.com/color/32/tiktok.png" alt="TikTok">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-center">
+        <p>© 2025 Tổ Quốc Fashion. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+  </button>
+
+  <!-- Pop-up Ad -->
+  <div id="popup" class="popup">
+    <span id="popup-close" class="popup-close">×</span>
+    <img src="https://images.unsplash.com/photo-1507643179773-3e975d7ac515?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Soldiers" class="w-32 mx-auto mb-4 rounded">
+    <h3 class="text-xl font-bold text-red-600 mb-4">Ưu đãi đặc biệt!</h3>
+    <p class="mb-4">Giảm 20% cho tất cả sản phẩm yêu nước! Nhập mã <strong>VIETNAM20</strong> khi thanh toán.</p>
+    <a href="#shop" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Mua ngay</a>
+  </div>
+
+  <script>
+    // Hero Slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 5000);
+
+    // User Modal
+    const userBtn = document.getElementById('user-btn');
+    const userModal = document.getElementById('user-modal');
+    const closeModal = document.getElementById('close-modal');
+    const loginTab = document.getElementById('login-tab');
+    const registerTab = document.getElementById('register-tab');
+    const loginContent = document.getElementById('login-content');
+    const registerContent = document.getElementById('register-content');
+
+    userBtn.addEventListener('click', () => {
+      userModal.style.display = 'flex';
+    });
+
+    closeModal.addEventListener('click', () => {
+      userModal.style.display = 'none';
+    });
+
+    loginTab.addEventListener('click', () => {
+      loginTab.classList.add('active');
+      registerTab.classList.remove('active');
+      loginContent.classList.add('active');
+      registerContent.classList.remove('active');
+    });
+
+    registerTab.addEventListener('click', () => {
+      registerTab.classList.add('active');
+      loginTab.classList.remove('active');
+      registerContent.classList.add('active');
+      loginContent.classList.remove('active');
+    });
+
+    document.getElementById('submit-login').addEventListener('click', () => {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+      if (username && password) {
+        alert('Đăng nhập thành công!');
+        userModal.style.display = 'none';
+      } else {
+        alert('Vui lòng nhập đầy đủ thông tin!');
+      }
+    });
+
+    document.getElementById('submit-register').addEventListener('click', () => {
+      const username = document.getElementById('register-username').value;
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+      if (username && email && password) {
+        alert('Đăng ký thành công! Vui lòng đăng nhập.');
+        userModal.style.display = 'none';
+        loginTab.click();
+      } else {
+        alert('Vui lòng nhập đầy đủ thông tin!');
+      }
+    });
+
+    // Cart Functionality
+    let cart = [];
+    const cartBtn = document.getElementById('cart-btn');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const cartCount = document.getElementById('cart-count');
+
+    cartBtn.addEventListener('click', () => {
+      cartDropdown.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.dataset.name;
+        const price = parseInt(button.dataset.price);
+        const existingItem = cart.find(item => item.name === name);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ name, price, quantity: 1 });
+        }
+
+        updateCart();
+      });
+    });
+
+    function updateCart() {
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item flex justify-between';
+        itemElement.innerHTML = `
+          <span>${item.name} x${item.quantity}</span>
+          <span>${(item.price * item.quantity).toLocaleString()} VNĐ</span>
+        `;
+        cartItems.appendChild(itemElement);
+      });
+      cartTotal.textContent = `${total.toLocaleString()} VNĐ`;
+      cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.classList.add('bounce');
+      setTimeout(() => cartCount.classList.remove('bounce'), 300);
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!cartBtn.contains(e.target) && !cartDropdown.contains(e.target)) {
+        cartDropdown.classList.remove('show');
+      }
+    });
+
+    // Filter Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productGrid = document.getElementById('product-grid');
+    const products = Array.from(productGrid.children);
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const sortType = button.dataset.sort;
+        let sortedProducts = [...products];
+
+        if (sortType === 'price-asc') {
+          sortedProducts.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
+        } else if (sortType === 'price-desc') {
+          sortedProducts.sort((a, b) => parseInt(b.dataset.price) - parseInt(a.dataset.price));
+        }
+
+        productGrid.innerHTML = '';
+        sortedProducts.forEach(product => productGrid.appendChild(product));
+      });
+    });
+
+    // Back to Top
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Pop-up Ad
+    const popup = document.getElementById('popup');
+    const popupClose = document.getElementById('popup-close');
+
+    setTimeout(() => {
+      popup.classList.add('show');
+    }, 5000);
+
+    popupClose.addEventListener('click', () => {
+      popup.classList.remove('show');
+    });
+  </script>
+</body>
+</html>

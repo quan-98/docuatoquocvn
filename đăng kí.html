@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - SachViet</title>
+    <link href="search.css" rel="stylesheet" type="text/css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #d19e11;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            background-color: #1a237e;
+            color: rgb(211, 198, 24);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin-left: 20px;
+        }
+
+        .menu a {
+            color: rgb(209, 152, 28);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffcc80;
+            transform: translateY(-2px);
+        }
+
+        .header-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-links a {
+            color: rgb(209, 152, 28);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .header-links a:hover {
+            color: #ffcc80;
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 24px;
+            color: rgb(209, 152, 28);
+            transition: color 0.3s;
+        }
+
+        .cart-icon:hover {
+            color: #ffcc80;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff5722;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .cart-count.animate {
+            transform: scale(1.5);
+        }
+
+        /* Register Section */
+        .register-section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #d19e11;
+            text-shadow: 0 0 10px rgba(209, 158, 17, 0.7);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(209, 158, 17, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(209, 158, 17, 1); }
+            100% { text-shadow: 0 0 10px rgba(209, 158, 17, 0.7); }
+        }
+
+        .register-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(255, 87, 34, 0.3);
+            position: relative;
+            animation: slideIn 1s ease-out;
+            border: 2px solid #ff5722;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 12px;
+            left: 15px;
+            color: #1a237e;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            transform-origin: left;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            background: transparent;
+            color: #1a237e;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #ff5722;
+            box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+            outline: none;
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            transform: translateY(-30px) scale(0.8) rotateX(360deg);
+            color: #ff5722;
+            font-size: 12px;
+        }
+
+        .form-group input:hover {
+            transform: scale(1.02);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 87, 34, 0.7);
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .submit-btn:active::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        .form-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-links a {
+            color: #ff5722;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .form-links a:hover {
+            color: #f4511e;
+        }
+
+        .form-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff5722;
+            transition: width 0.3s;
+        }
+
+        .form-links a:hover::after {
+            width: 100%;
+        }
+
+        .error-message {
+            color: #ff5722;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Particle Effects */
+        #particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #263238;
+            color: white;
+            padding: 50px 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #b0bec5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: rgb(211, 214, 27);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #455a64;
+            color: #b0bec5;
+        }
+
+        @media (max-width: 768px) {
+            .menu, .header-links {
+                display: none;
+            }
+
+            .register-form {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">SachViet</div>
+                <ul class="menu">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="sách cũ.html">Mua sách cũ</a></li>
+                </ul>
+                <div class="header-links">
+              
+                    <a href="register.html">Đăng ký</a>
+          
+                    <a href="giỏi hàng.html" class="cart-icon">🛒 <span class="cart-count" id="cartCount"></span></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="register-section container">
+        <h2 class="section-title">Đăng ký tài khoản</h2>
+        <form class="register-form" id="registerForm">
+            <div class="form-group">
+                <input type="text" id="username" placeholder=" " required>
+                <label for="username">Tên đăng nhập</label>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder=" " required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder=" " required>
+                <label for="password">Mật khẩu</label>
+                <div class="error-message" id="passwordError">Mật khẩu không khớp!</div>
+            </div>
+            <div class="form-group">
+                <input type="password" id="confirm-password" placeholder=" " required>
+                <label for="confirm-password">Xác nhận mật khẩu</label>
+            </div>
+            <button type="submit" class="submit-btn">Đăng ký</button>
+            <div class="form-links">
+                <p>Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a></p>
+            </div>
+        </form>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SachViet</h3>
+                    <p>Nhà sách trực tuyến hàng đầu Việt Nam với hàng nghìn đầu sách chất lượng.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Thông tin</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Chính sách vận chuyển</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Tài khoản</h3>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Đăng nhập</a></li>
+                        <li><a href="register.html">Đăng ký</a></li>
+                        <li><a href="cart.html">Giỏ hàng</a></li>
+                        <li><a href="#">Theo dõi đơn hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <ul class="footer-links">
+                        <li>Địa chỉ: 123 Nguyễn Văn Cừ, Dĩ An, Bình Dương</li>
+                        <li>Email: info@sachviet.com</li>
+                        <li>Điện thoại: 0979319917</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 SachViet. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart Count
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        // Form Validation
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const passwordError = document.getElementById('passwordError');
+
+            if (password !== confirmPassword) {
+                passwordError.style.display = 'block';
+                return;
+            }
+
+            passwordError.style.display = 'none';
+            alert(`Đăng ký thành công cho ${username}!`);
+            window.location.href = 'index.html';
+        });
+
+        // Particle Effect
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 50;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.size > 0.2) this.size -= 0.05;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = 'rgba(255, 87, 34, 0.8)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#ff5722';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle, index) => {
+                particle.update();
+                particle.draw();
+                if (particle.size <= 0.2) {
+                    particles.splice(index, 1);
+                    particles.push(new Particle());
+                }
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

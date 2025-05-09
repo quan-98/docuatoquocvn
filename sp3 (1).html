@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thời Trang Biểu Tượng Tổ Quốc</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+   body {
+      font-family: 'Roboto', sans-serif;
+      color: #1a1a1a;
+      /* Background với hình ảnh và gradient */
+      background: linear-gradient(rgba(255, 0, 0, 0.3), rgba(255, 215, 0, 0.3)), url('https://images.unsplash.com/photo-1618472609777-c4ea46e9c6c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      background-attachment: fixed; /* Hiệu ứng parallax nhẹ */
+    }
+    .product-card {
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    /* Đảm bảo các section có nền trong suốt hoặc nền trắng để nội dung dễ đọc */
+    .bg-semi-transparent {
+      background: rgba(255, 255, 255, 0.9);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <div class="text-2xl font-bold">
+        <a href="#" class="flex items-center">
+          Tổ Quốc Fashion
+        </a>
+      </div>
+      <nav class="space-x-6">
+        <a href="TRANG CHỦ VY.HTML" class="hover:text-red-600">Trang chủ</a>
+        <a href="sp1.html" class="hover:text-red-600">Phụ kiện và túi đựng</a>
+        <a href="sp3 (1).html" class="hover:text-red-600">Áo truyền thống và hiện đại </a>
+        <a href="sp2.html" class="hover:text-red-600">Đồ cho bé - mầm non tương lai </a>
+        
+      </nav>
+      <div class="flex items-center space-x-4">
+        <a href="#" class="hover:text-red-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+        </a>
+        <a href="#" class="hover:text-red-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="bg-gray-100 py-12">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-bold mb-4">Thời Trang Biểu Tượng Tổ Quốc</h1>
+      <p class="text-lg mb-6">Tôn vinh giá trị Việt qua từng sản phẩm thời trang và phụ kiện tinh tế.</p>
+      <a href="#" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700">Khám phá ngay</a>
+    </div>
+  </section>
+
+  <!-- Product Categories Section -->
+  <section class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-center mb-8">Áo truyền thống và hiện đại</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Category 1 -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="Screenshot 2025-04-24 110523.png" alt="Áo truyền thống" class="w-full h-40 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="text-lg font-semibold">Áo Truyền Thống</h3>
+          <a href="#" class="mt-2 inline-block text-red-600 hover:underline">Xem tất cả</a>
+        </div>
+      </div>
+      
+      <!-- Category 2 -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="Screenshot 2025-04-24 110540.png" alt="Áo thanh niên" class="w-full h-40 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="text-lg font-semibold">Áo Thanh Niên</h3>
+          <a href="#" class="mt-2 inline-block text-red-600 hover:underline">Xem tất cả</a>
+        </div>
+      </div>
+      <!-- Category 3 -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="Screenshot 2025-04-24 110648.png" alt="Đồ bé mầm non tương lai" class="w-full h-40 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="text-lg font-semibold">Áo truyền thống in hình Việt Nam</h3>
+          <a href="#" class="mt-2 inline-block text-red-600 hover:underline">Xem tất cả</a>
+        </div>
+      </div>
+      <!-- Category 4 -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="Screenshot 2025-04-24 110616.png" alt="Mũ" class="w-full h-40 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="text-lg font-semibold">Áo truyền thống in hình độc lập tự do</h3>
+          <a href="#" class="mt-2 inline-block text-red-600 hover:underline">Xem tất cả</a>
+        </div>
+      </div>
+      <!-- Category 5 -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="Screenshot 2025-04-24 110557.png" alt="Túi" class="w-full h-40 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="text-lg font-semibold">Áo thun in chữ </h3>
+          <a href="#" class="mt-2 inline-block text-red-600 hover:underline">Xem tất cả</a>
+        </div>
+      </div>
+      <!-- Category 6 -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="Screenshot 2025-04-24 130627.png" alt="Phụ kiện" class="w-full h-40 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="text-lg font-semibold">Áo thun đỏ chữ độc lập </h3>
+          <a href="#" class="mt-2 inline-block text-red-600 hover:underline">Xem tất cả</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Section -->
+  
+      <!-- Product Card 3 -->
+      
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-lg font-bold mb-4">Tổ Quốc Fashion</h3>
+          <p>Tôn vinh văn hóa Việt qua thời trang và phụ kiện độc đáo.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Liên kết nhanh</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-red-400">Trang chủ</a></li>
+            <li><a href="#" class="hover:text-red-400">Sản phẩm</a></li>
+            <li><a href="#" class="hover:text-red-400">Liên hệ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Liên hệ</h3>
+          <p>Email: contact@toquocfashion.vn</p>
+          <p>Hotline: 0123 456 789</p>
+          <p>Địa chỉ: 123 Đường Láng, Hà Nội</p>
+        </div>
+      </div>
+      <div class="mt-8 text-center">
+        <p>© 2025 Tổ Quốc Fashion. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
